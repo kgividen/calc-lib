@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"strconv"
@@ -20,11 +21,11 @@ func main() {
 }
 
 type Handler struct {
-	stdout     *os.File
+	stdout     io.Writer
 	calculator *calc.Addition
 }
 
-func NewHandler(stdout *os.File, calculator *calc.Addition) *Handler {
+func NewHandler(stdout io.Writer, calculator *calc.Addition) *Handler {
 	return &Handler{
 		stdout:     stdout,
 		calculator: calculator,
